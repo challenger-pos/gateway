@@ -14,7 +14,7 @@ env:
 jobs:
   deploy-gateway:
     name: Deploy API Gateway
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     environment: ${{ github.ref_name == 'main' && 'production' || 'develop' }}
 
     steps:
