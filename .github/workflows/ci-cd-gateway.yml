@@ -40,3 +40,5 @@ jobs:
       - name: Terraform Gateway Apply
         working-directory: ${{ env.TERRAFORM_API_GW_DIR }}
         run: terraform apply -auto-approve -var="app_base_url=http://example.com"
+        env:
+          TF_VAR_environment: ${{ env.ENVIRONMENT }}
