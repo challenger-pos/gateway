@@ -5,20 +5,34 @@ resource "aws_apigatewayv2_integration" "auth_lambda" {
   payload_format_version = "2.0"
 }
 
-resource "aws_apigatewayv2_integration" "app_backend" {
+/*resource "aws_apigatewayv2_integration" "app_backend" {
   api_id                 = aws_apigatewayv2_api.main_api.id
   integration_type       = "HTTP_PROXY"
   integration_method     = "ANY"
   integration_uri        = var.app_base_url
   payload_format_version = "1.0"
-}
-
-/*resource "aws_apigatewayv2_integration" "app_backend" {
-  api_id                 = aws_apigatewayv2_api.main_api.id
-  integration_type       = "HTTP_PROXY"
-  connection_type        = "VPC_LINK"
-  connection_id          = aws_apigatewayv2_vpc_link.app.id
-  integration_uri        = var.alb_listener_arn
-  integration_method     = "ANY"
-  payload_format_version = "1.0"
 }*/
+
+# resource "aws_apigatewayv2_integration" "app_backend" {
+#   api_id                 = aws_apigatewayv2_api.main_api.id
+#   integration_type       = "HTTP_PROXY"
+#   connection_type        = "VPC_LINK"
+#   connection_id          = aws_apigatewayv2_vpc_link.app.id
+#   integration_uri        = data.terraform_remote_state.app.outputs.challengeone_lb_listener_arn
+#   integration_method     = "ANY"
+#   payload_format_version = "1.0"
+# }
+
+resource "aws_apigatewayv2_integration" "app_backend" {
+  api_id           = aws_apigatewayv2_api.main_api.id
+  integration_type = "HTTP_PROXY"
+
+  connection_type = "VPC_LINK"
+  connection_id   = aws_apigatewayv2_vpc_link.app.id
+
+  integration_method = "ANY"
+
+  integration_uri = data.aws_lb_listener.app_lb_listener_80.arn
+
+  payload_format_version = "1.0"
+}
