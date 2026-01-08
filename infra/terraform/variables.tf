@@ -1,21 +1,14 @@
-variable "app_base_url" {
-  description = "URL base da aplicação backend"
-  type        = string
-}
-
-# variable "alb_listener_arn" {
-#   description = "ARN do listener do ALB da aplicação"
-#   type        = string
-# }
-#
 # variable "private_subnet_ids" {
-#   type = list(string)
+#   description = "IDs das subnets privadas onde o VPC Link será criado"
+#   type        = list(string)
 # }
-#
+
 # variable "vpc_link_sg_id" {
-#   type = string
+#   description = "ID do Security Group usado pelo VPC Link do API Gateway"
+#   type        = string
 # }
 
 variable "environment" {
-  type    = string
+  description = "Ambiente de implantação (ex: develop, prod)"
+  type        = string
 }

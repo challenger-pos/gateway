@@ -1,8 +1,8 @@
-resource "aws_apigatewayv2_route" "auth_document_login" {
-  api_id    = aws_apigatewayv2_api.main_api.id
-  route_key = "POST /auth"
-  target    = "integrations/${aws_apigatewayv2_integration.auth_lambda.id}"
-}
+# resource "aws_apigatewayv2_route" "auth_document_login" {
+#   api_id    = aws_apigatewayv2_api.main_api.id
+#   route_key = "POST /auth"
+#   target    = "integrations/${aws_apigatewayv2_integration.auth_lambda.id}"
+# }
 
 resource "aws_apigatewayv2_route" "auth_login" {
   api_id    = aws_apigatewayv2_api.main_api.id
