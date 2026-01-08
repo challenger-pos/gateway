@@ -2,20 +2,21 @@ name: CI - Deploy API Gateway
 
 on:
   push:
-    branches: [ "main", "develop" ]
-  pull_request:
-    branches: [ "main", "develop" ]
+    branches:
+      - main
+      - homologation
+      - production
   workflow_dispatch:
 
 env:
   TERRAFORM_API_GW_DIR: infra/terraform
-  ENVIRONMENT: ${{ github.ref_name == 'main' && 'production' || 'develop' }}
+  ENVIRONMENT: ${{ github.ref_name == 'main' && 'production' || (github.ref_name == 'homologation' && 'homologation' || 'develop') }}
 
 jobs:
   deploy-gateway:
     name: Deploy API Gateway
     runs-on: ubuntu-latest
-    environment: ${{ github.ref_name == 'main' && 'production' || 'develop' }}
+    environment: ${{ github.ref_name == 'main' && 'production' || github.ref_name }}
 
     steps:
       - name: Checkout code
