@@ -7,5 +7,5 @@ locals {
 }
 
 locals {
-  kubernetes_state_path = "kubernetes/terraform.tfstate"
+  kubernetes_state_path = "kubernetes/${var.environment}/terraform.tfstate"
 }
