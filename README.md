@@ -8,10 +8,16 @@ Este repositório gerencia o **AWS API Gateway (HTTP API)**, que atua como o pon
 
 O API Gateway centraliza o tráfego e distribui as requisições da seguinte forma:
 
-- **Rota de Autenticação (`/auth`):** Direcionada para a **AWS Lambda** (Java 21) para validação de documento e geração de JWT.
-- **Rotas de Negócio (`/{proxy+}`):** Encaminha as requisições para a **Aplicação Principal**, onde residem os serviços da Mecânica.
+- **Rota de Autenticação (`/v1/auth/login`):** Direcionada para a **AWS Lambda** (Java 21) para validação de documento e geração de JWT.
+- **Rotas de Negócio (`/api/{proxy+}`):** Encaminha as requisições para a **Aplicação Principal** no EKS, onde residem os serviços da Mecânica.
+- **Rota de Documentação:** Mapeamento específico para o **Swagger UI** e definições OpenAPI.
 
+### 🔗 Endpoints de Acesso (Exemplos)
+A URL base do Gateway é gerada dinamicamente e pode ser consultada através dos **outputs do Terraform** após o deploy.
 
+| URL Base do Gateway                                    | Caminho do Swagger |
+|:-------------------------------------------------------| :--- |
+| `https://{api-id}.execute-api.us-east-2.amazonaws.com` | `/api/swagger-ui/index.html` |
 
 ---
 
@@ -19,9 +25,9 @@ O API Gateway centraliza o tráfego e distribui as requisições da seguinte for
 
 Para permitir que os ambientes coexistam na mesma conta AWS sem conflitos, a infraestrutura via Terraform utiliza:
 
-- **Nomenclatura Dinâmica:** Todos os recursos (API, Stages, Integrations) possuem o sufixo `${var.environment}` (ex: `main-http-api-production`).
-- **Segurança:** As permissões são restritas, garantindo que o Gateway de um ambiente acesse apenas o ambiente correspondente.
-- **URLs Independentes:** Cada deploy gera um endpoint específico para aquele ambiente.
+- **Nomenclatura Dinâmica:** Todos os recursos (API, Stages, Integrations) possuem o sufixo `${var.environment}` (ex: `main-http-api-homologation`).
+- **Segurança:** As permissões são restritas via Security Groups e IAM Roles, garantindo que o Gateway acesse apenas os recursos do ambiente correspondente.
+- **URLs Independentes:** Cada deploy gera um endpoint específico, isolando o tráfego de teste do tráfego de produção.
 
 ---
 
@@ -37,11 +43,13 @@ Para permitir que os ambientes coexistam na mesma conta AWS sem conflitos, a inf
 
 ### Planejamento da Infraestrutura Local
 1. `cd infra/terraform`
-2. `terraform init -backend-config="key=lambda/develop/terraform.tfstate"`
-3. `terraform plan -var="environment=develop"`
+2. `terraform init -backend-config="key=api-gateway/${var.environment}/terraform.tfstate"`
+3. `terraform plan -var="environment=homologation"`
+4. `terraform apply -var="environment=homologation"`
 
 ---
 
 ## 🧪 Monitoramento
-- **Métricas:** Latência e erros (4xx/5xx) monitorados via CloudWatch Metrics diretamente no API Gateway.
-- **Logs:** Logs de execução e auditoria centralizados por ambiente.
+- **Métricas:** Latência, contagem de requisições e erros (4xx/5xx) monitorados via **CloudWatch Metrics**.
+- **Logs:** Logs de acesso detalhados configurados por Stage, permitindo auditoria de quem acessou qual endpoint.
+- **Saúde do Backend:** Integração direta com o **Health Check (/actuator/health)** das instâncias no EKS.

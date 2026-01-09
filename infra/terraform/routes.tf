@@ -225,3 +225,33 @@ resource "aws_apigatewayv2_route" "work_order_average_time" {
   route_key = "GET /api/v1/work-orders/calculate-average-time"
   target    = "integrations/${aws_apigatewayv2_integration.app_backend.id}"
 }
+
+resource "aws_apigatewayv2_route" "swagger_proxy" {
+  api_id    = aws_apigatewayv2_api.main_api.id
+  route_key = "GET /api/swagger-ui/{proxy+}"
+  target    = "integrations/${aws_apigatewayv2_integration.app_backend.id}"
+}
+
+resource "aws_apigatewayv2_route" "swagger_docs_root" {
+  api_id    = aws_apigatewayv2_api.main_api.id
+  route_key = "GET /api/documentation"
+  target    = "integrations/${aws_apigatewayv2_integration.app_backend.id}"
+}
+
+resource "aws_apigatewayv2_route" "swagger_docs" {
+  api_id    = aws_apigatewayv2_api.main_api.id
+  route_key = "GET /api/documentation/{proxy+}"
+  target    = "integrations/${aws_apigatewayv2_integration.app_backend.id}"
+}
+
+resource "aws_apigatewayv2_route" "swagger_v3_docs" {
+  api_id    = aws_apigatewayv2_api.main_api.id
+  route_key = "GET /api/v3/api-docs/{proxy+}"
+  target    = "integrations/${aws_apigatewayv2_integration.app_backend.id}"
+}
+
+resource "aws_apigatewayv2_route" "app_health" {
+  api_id    = aws_apigatewayv2_api.main_api.id
+  route_key = "GET /api/actuator/health"
+  target    = "integrations/${aws_apigatewayv2_integration.app_backend.id}"
+}

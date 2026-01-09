@@ -3,7 +3,7 @@ data "terraform_remote_state" "app" {
 
   config = {
     bucket = "tf-state-challenge-bucket"
-    key    = "app/develop/terraform.tfstate"
+    key    = local.app_state_path
     region = "us-east-2"
   }
 }
