@@ -66,6 +66,25 @@ nas branches `homologation` e `main`.
 
 ---
 
+## 🧪 Testes de API (Postman)
+
+Este repositório disponibiliza uma **Postman Collection** contendo
+os principais fluxos da aplicação da oficina mecânica.
+
+📁 Local: `docs/postman/oficina-api.postman_collection.json`
+
+### 🔐 Autenticação
+- **Login de funcionário:** `POST /api/v1/auth/login`
+- **Autenticação de cliente por documento:** `POST /auth`
+
+### 🔄 Fluxos cobertos
+- Cadastro e gestão de clientes, veículos, usuários, peças e serviços
+- Criação e gerenciamento de ordens de serviço
+- Aprovação e recusa pelo cliente
+- Endpoints de monitoramento (health check)
+
+---
+
 ## 🧪 Monitoramento
 - **Métricas:** Latência, contagem de requisições e erros (4xx/5xx) monitorados via **CloudWatch Metrics**.
 - **Logs:** Logs de acesso detalhados configurados por Stage, permitindo auditoria de quem acessou qual endpoint.
@@ -87,4 +106,5 @@ nas branches `homologation` e `main`.
 > Os ambientes não permanecem ativos continuamente para evitar custos em AWS.
 > A URL do API Gateway é disponibilizada como **outputs do Terraform**
 > após o deploy do ambiente.
+> Ajuste a variável `AWS_URL` conforme o output do Terraform.
 
