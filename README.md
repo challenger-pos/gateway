@@ -8,9 +8,17 @@ Este repositório gerencia o **AWS API Gateway (HTTP API)**, que atua como o pon
 
 O API Gateway centraliza o tráfego e distribui as requisições da seguinte forma:
 
-- **Rota de Autenticação (`/v1/auth/login`):** Direcionada para a **AWS Lambda** (Java 21) para validação de documento e geração de JWT.
-- **Rotas de Negócio (`/api/{proxy+}`):** Encaminha as requisições para a **Aplicação Principal** no EKS, onde residem os serviços da Mecânica.
+- **Rota de Autenticação (`/auth`):** Direcionada para a **AWS Lambda** (Java 21) para validação de documento e geração de JWT.
+- **Rotas de Negócio (`/api/v1/{proxy+}`):** Encaminha as requisições para a **Aplicação Principal** no EKS, onde residem os serviços da Mecânica.
 - **Rota de Documentação:** Mapeamento específico para o **Swagger UI** e definições OpenAPI.
+
+---
+
+## 🧭 Diagrama da Arquitetura
+
+![Diagrama da Arquitetura do API Gateway](docs/diagrama-gateway.png)
+
+---
 
 ### 🔗 Endpoints de Acesso (Exemplos)
 A URL base do Gateway é gerada dinamicamente e pode ser consultada através dos **outputs do Terraform** após o deploy.
@@ -39,6 +47,15 @@ Para permitir que os ambientes coexistam na mesma conta AWS sem conflitos, a inf
 
 ---
 
+## 🔁 CI/CD
+
+O deploy da infraestrutura é realizado automaticamente via **GitHub Actions**
+nas branches `homologation` e `main`.
+
+🔗 Pipeline: https://github.com/challenger-pos/gateway/actions
+
+---
+
 ## 🚀 Operações (Terraform)
 
 ### Planejamento da Infraestrutura Local
@@ -49,7 +66,45 @@ Para permitir que os ambientes coexistam na mesma conta AWS sem conflitos, a inf
 
 ---
 
+## 🧪 Testes de API (Postman)
+
+Este repositório disponibiliza uma **Postman Collection** contendo
+os principais fluxos da aplicação da oficina mecânica.
+
+📁 Local: `docs/postman/oficina-api.postman_collection.json`
+
+### 🔐 Autenticação
+- **Login de funcionário:** `POST /api/v1/auth/login`
+- **Autenticação de cliente por documento:** `POST /auth`
+
+### 🔄 Fluxos cobertos
+- Cadastro e gestão de clientes, veículos, usuários, peças e serviços
+- Criação e gerenciamento de ordens de serviço
+- Aprovação e recusa pelo cliente
+- Endpoints de monitoramento (health check)
+
+---
+
 ## 🧪 Monitoramento
 - **Métricas:** Latência, contagem de requisições e erros (4xx/5xx) monitorados via **CloudWatch Metrics**.
 - **Logs:** Logs de acesso detalhados configurados por Stage, permitindo auditoria de quem acessou qual endpoint.
 - **Saúde do Backend:** Integração direta com o **Health Check (/actuator/health)** das instâncias no EKS.
+
+---
+
+## 🧰 Tecnologias Utilizadas
+- AWS API Gateway (HTTP API)
+- AWS Lambda (integração)
+- Amazon EKS
+- Terraform
+- GitHub Actions
+- Swagger
+
+---
+
+> ⚠️ **Observação:**  
+> Os ambientes não permanecem ativos continuamente para evitar custos em AWS.
+> A URL do API Gateway é disponibilizada como **outputs do Terraform**
+> após o deploy do ambiente.
+> Ajuste a variável `AWS_URL` conforme o output do Terraform.
+
