@@ -259,41 +259,41 @@ resource "aws_apigatewayv2_route" "app_health" {
 resource "aws_apigatewayv2_route" "stock_part_create" {
   api_id    = aws_apigatewayv2_api.main_api.id
   route_key = "POST /api/stock/parts"
-  target    = "integrations/${aws_apigatewayv2_integration.app_backend.id}"
+  target    = "integrations/${aws_apigatewayv2_integration.stock_backend.id}"
 }
 
 resource "aws_apigatewayv2_route" "stock_part_get_by_id" {
   api_id    = aws_apigatewayv2_api.main_api.id
   route_key = "GET /api/stock/parts/{id}"
-  target    = "integrations/${aws_apigatewayv2_integration.app_backend.id}"
+  target    = "integrations/${aws_apigatewayv2_integration.stock_backend.id}"
 }
 
 resource "aws_apigatewayv2_route" "stock_part_update" {
   api_id    = aws_apigatewayv2_api.main_api.id
   route_key = "PUT /api/stock/parts/{id}"
-  target    = "integrations/${aws_apigatewayv2_integration.app_backend.id}"
+  target    = "integrations/${aws_apigatewayv2_integration.stock_backend.id}"
 }
 
 resource "aws_apigatewayv2_route" "stock_part_delete" {
   api_id    = aws_apigatewayv2_api.main_api.id
   route_key = "DELETE /api/stock/parts/{id}"
-  target    = "integrations/${aws_apigatewayv2_integration.app_backend.id}"
+  target    = "integrations/${aws_apigatewayv2_integration.stock_backend.id}"
 }
 
 resource "aws_apigatewayv2_route" "stock_reserve" {
   api_id    = aws_apigatewayv2_api.main_api.id
   route_key = "POST /api/stock/reserve"
-  target    = "integrations/${aws_apigatewayv2_integration.app_backend.id}"
+  target    = "integrations/${aws_apigatewayv2_integration.stock_backend.id}"
 }
 
 resource "aws_apigatewayv2_route" "stock_approve_reserve" {
   api_id    = aws_apigatewayv2_api.main_api.id
   route_key = "POST /api/stock/approve-reserve"
-  target    = "integrations/${aws_apigatewayv2_integration.app_backend.id}"
+  target    = "integrations/${aws_apigatewayv2_integration.stock_backend.id}"
 }
 
 resource "aws_apigatewayv2_route" "stock_cancel_reserve" {
   api_id    = aws_apigatewayv2_api.main_api.id
   route_key = "POST /api/stock/cancel-reserve"
-  target    = "integrations/${aws_apigatewayv2_integration.app_backend.id}"
+  target    = "integrations/${aws_apigatewayv2_integration.stock_backend.id}"
 }
