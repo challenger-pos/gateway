@@ -1,0 +1,1587 @@
+{
+  "info": {
+    "_postman_id": "4d7e2392-50a4-4631-ad50-9968feda9dee",
+    "name": "Fase 4 FIAP",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "14819201"
+  },
+  "item": [
+    {
+      "name": "OS Service",
+      "item": [
+        {
+          "name": "Cliente",
+          "item": [
+            {
+              "name": "Cria um novo cliente",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{TOKEN_FUNCIONARIO}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"name\": \"Teste Criação\",\r\n    \"documentNumber\": \"14523936056\",\r\n    \"email\":\"test@gmail.com\",\r\n    \"phone\": \"12365\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{AWS_URL}}api/v1/customer/create",
+                  "host": [
+                    "{{AWS_URL}}api"
+                  ],
+                  "path": [
+                    "v1",
+                    "customer",
+                    "create"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Atualiza um cliente existente",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{TOKEN_FUNCIONARIO}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"name\": \"Teste\",\r\n    \"documentNumber\": \"35763066090\",\r\n    \"email\":\"ana.oliveira@email.com\",\r\n    \"phone\": \"123656342\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{AWS_URL}}api/v1/customer/80a0417f-d8e9-7019-3aaf-477d9545c5d7",
+                  "host": [
+                    "{{AWS_URL}}api"
+                  ],
+                  "path": [
+                    "v1",
+                    "customer",
+                    "80a0417f-d8e9-7019-3aaf-477d9545c5d7"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Busca um cliente pelo ID",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{TOKEN_FUNCIONARIO}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{AWS_URL}}api/v1/customer/70f9316e-c7d8-4908-829e-366c8434b4c6",
+                  "host": [
+                    "{{AWS_URL}}api"
+                  ],
+                  "path": [
+                    "v1",
+                    "customer",
+                    "70f9316e-c7d8-4908-829e-366c8434b4c6"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Busca um cliente pelo documento",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{TOKEN_FUNCIONARIO}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{AWS_URL}}api/v1/customer/document/25360284021",
+                  "host": [
+                    "{{AWS_URL}}api"
+                  ],
+                  "path": [
+                    "v1",
+                    "customer",
+                    "document",
+                    "25360284021"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Deleta um cliente pelo ID",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{TOKEN_FUNCIONARIO}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "{{AWS_URL}}api/v1/customer/691e5043-8e50-475e-af3d-605a33dcb1d3",
+                  "host": [
+                    "{{AWS_URL}}api"
+                  ],
+                  "path": [
+                    "v1",
+                    "customer",
+                    "691e5043-8e50-475e-af3d-605a33dcb1d3"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Ativa um Cliente",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{TOKEN_FUNCIONARIO}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "header": [],
+                "url": {
+                  "raw": "{{AWS_URL}}api/v1/customer/active/80a0417f-d8e9-7019-3aaf-477d9545c5d7",
+                  "host": [
+                    "{{AWS_URL}}api"
+                  ],
+                  "path": [
+                    "v1",
+                    "customer",
+                    "active",
+                    "80a0417f-d8e9-7019-3aaf-477d9545c5d7"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Desativa um Cliente",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{TOKEN_FUNCIONARIO}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "header": [],
+                "url": {
+                  "raw": "{{AWS_URL}}api/v1/customer/inactive/80a0417f-d8e9-7019-3aaf-477d9545c5d7",
+                  "host": [
+                    "{{AWS_URL}}api"
+                  ],
+                  "path": [
+                    "v1",
+                    "customer",
+                    "inactive",
+                    "80a0417f-d8e9-7019-3aaf-477d9545c5d7"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Peça",
+          "item": [
+            {
+              "name": "Cria uma nova peça",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{TOKEN_FUNCIONARIO}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"name\": \"Cria Peça\",\r\n    \"description\": \"Cria Peça\",\r\n    \"price\": 10,\r\n    \"stockQuantity\": 10,\r\n    \"minimumStock\": 1\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{AWS_URL}}api/v1/parts",
+                  "host": [
+                    "{{AWS_URL}}api"
+                  ],
+                  "path": [
+                    "v1",
+                    "parts"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Busca uma peça pelo ID",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{TOKEN_FUNCIONARIO}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{AWS_URL}}api/v1/parts/40e6215d-b5c6-4896-987c-144a6312a2a7",
+                  "host": [
+                    "{{AWS_URL}}api"
+                  ],
+                  "path": [
+                    "v1",
+                    "parts",
+                    "40e6215d-b5c6-4896-987c-144a6312a2a7"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Atualiza uma peça existente",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{TOKEN_FUNCIONARIO}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"name\": \"Pistão\",\r\n    \"description\": \"Pistão XPTO\",\r\n    \"price\": 50,\r\n    \"stockQuantity\": 1500,\r\n    \"reservedStock\": 0,\r\n    \"minimumStock\": 5\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{AWS_URL}}api/v1/parts/40e6215d-b5c6-4896-987c-144a6312a2a6",
+                  "host": [
+                    "{{AWS_URL}}api"
+                  ],
+                  "path": [
+                    "v1",
+                    "parts",
+                    "40e6215d-b5c6-4896-987c-144a6312a2a6"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Deleta uma peça pelo ID",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{TOKEN_FUNCIONARIO}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "{{AWS_URL}}api/v1/parts/40e6215d-b5c6-4896-987c-144a6312a2a7",
+                  "host": [
+                    "{{AWS_URL}}api"
+                  ],
+                  "path": [
+                    "v1",
+                    "parts",
+                    "40e6215d-b5c6-4896-987c-144a6312a2a7"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Serviço",
+          "item": [
+            {
+              "name": "Cria um novo serviço",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{TOKEN_FUNCIONARIO}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"name\": \"Cria Serviço\",\r\n    \"description\": \"Cria Serviço\",\r\n    \"basePrice\": 10,\r\n    \"estimatedTimeMin\": 10\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{AWS_URL}}api/v1/services",
+                  "host": [
+                    "{{AWS_URL}}api"
+                  ],
+                  "path": [
+                    "v1",
+                    "services"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Busca um serviço pelo ID",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{TOKEN_FUNCIONARIO}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{AWS_URL}}api/v1/services/40e6215d-b5c6-4896-987c-144a6312a2a7",
+                  "host": [
+                    "{{AWS_URL}}api"
+                  ],
+                  "path": [
+                    "v1",
+                    "services",
+                    "40e6215d-b5c6-4896-987c-144a6312a2a7"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Busca uma lista de serviços por IDs",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{TOKEN_FUNCIONARIO}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{AWS_URL}}api/v1/services?ids=40e6215d-b5c6-4896-987c-144a6312a2a7,b1a92d74-7c4f-4a5a-b4e3-5f6923c77d1c",
+                  "host": [
+                    "{{AWS_URL}}api"
+                  ],
+                  "path": [
+                    "v1",
+                    "services"
+                  ],
+                  "query": [
+                    {
+                      "key": "ids",
+                      "value": "40e6215d-b5c6-4896-987c-144a6312a2a7,b1a92d74-7c4f-4a5a-b4e3-5f6923c77d1c"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Atualiza um serviço",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{TOKEN_FUNCIONARIO}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"name\": \"Alinhamento Updt\",\r\n    \"description\": \"Alinhamento de Rodas Updt\",\r\n    \"basePrice\": 10,\r\n    \"estimatedTimeMin\": 10\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{AWS_URL}}api/v1/services/b1a92d74-7c4f-4a5a-b4e3-5f6923c77d1c",
+                  "host": [
+                    "{{AWS_URL}}api"
+                  ],
+                  "path": [
+                    "v1",
+                    "services",
+                    "b1a92d74-7c4f-4a5a-b4e3-5f6923c77d1c"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Deleta um serviço",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{TOKEN_FUNCIONARIO}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "{{AWS_URL}}api/v1/services/4b864db3-9e07-46fe-84bf-cf27e7eae22d",
+                  "host": [
+                    "{{AWS_URL}}api"
+                  ],
+                  "path": [
+                    "v1",
+                    "services",
+                    "4b864db3-9e07-46fe-84bf-cf27e7eae22d"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Veículo",
+          "item": [
+            {
+              "name": "Cria um novo veículo",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{TOKEN_FUNCIONARIO}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"customerId\": \"80a0417f-d8e9-7019-3aaf-477d9545c5d7\",\r\n    \"licensePlate\": \"HSH-3118\",\r\n    \"brand\": \"teste\",\r\n    \"model\": 10,\r\n    \"year\": 2014\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{AWS_URL}}api/v1/vehicles",
+                  "host": [
+                    "{{AWS_URL}}api"
+                  ],
+                  "path": [
+                    "v1",
+                    "vehicles"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Busca um veículo pelo ID",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{TOKEN_FUNCIONARIO}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{AWS_URL}}api/v1/vehicles/40e6215d-b5c6-4896-987c-144a6312a2a5",
+                  "host": [
+                    "{{AWS_URL}}api"
+                  ],
+                  "path": [
+                    "v1",
+                    "vehicles",
+                    "40e6215d-b5c6-4896-987c-144a6312a2a5"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Busca um veículo pela placa",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{TOKEN_FUNCIONARIO}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{AWS_URL}}api/v1/vehicles/by-plate?plate=IBF7027",
+                  "host": [
+                    "{{AWS_URL}}api"
+                  ],
+                  "path": [
+                    "v1",
+                    "vehicles",
+                    "by-plate"
+                  ],
+                  "query": [
+                    {
+                      "key": "plate",
+                      "value": "IBF7027"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Atualiza um veículo",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{TOKEN_FUNCIONARIO}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"customerId\": \"60f8215d-b6c7-5897-198d-255b7323a3b5\",\r\n    \"licensePlate\": \"HSH-5555\",\r\n    \"brand\": \"Atualiza Marca\",\r\n    \"model\": \"XPTO\",\r\n    \"year\": 2014\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{AWS_URL}}api/v1/vehicles/90a1518c-e9fa-812a-4bb0-588ea656d6e8",
+                  "host": [
+                    "{{AWS_URL}}api"
+                  ],
+                  "path": [
+                    "v1",
+                    "vehicles",
+                    "90a1518c-e9fa-812a-4bb0-588ea656d6e8"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Deleta um veículo",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{TOKEN_FUNCIONARIO}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "{{AWS_URL}}api/v1/vehicles/397c9af2-47f4-4bab-89e9-949f817a0fe8",
+                  "host": [
+                    "{{AWS_URL}}api"
+                  ],
+                  "path": [
+                    "v1",
+                    "vehicles",
+                    "397c9af2-47f4-4bab-89e9-949f817a0fe8"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Usuario",
+          "item": [
+            {
+              "name": "Cria um novo usuário",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{TOKEN_FUNCIONARIO}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"name\": \"teste\",\r\n    \"email\": \"teste@gmail.com\",\r\n    \"role\": \"MECHANIC\",\r\n    \"password\": \"10safddfF!\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{AWS_URL}}api/v1/users/create",
+                  "host": [
+                    "{{AWS_URL}}api"
+                  ],
+                  "path": [
+                    "v1",
+                    "users",
+                    "create"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Busca um usuário pelo ID",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{TOKEN_FUNCIONARIO}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{AWS_URL}}api/v1/users/70e6215d-b5c6-4896-987c-144a6312a2b3",
+                  "host": [
+                    "{{AWS_URL}}api"
+                  ],
+                  "path": [
+                    "v1",
+                    "users",
+                    "70e6215d-b5c6-4896-987c-144a6312a2b3"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Atualiza um usuário existente",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{TOKEN_FUNCIONARIO}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"id\": \"70e6215d-b5c6-4896-987c-144a6312a2b3\",\r\n    \"name\": \"Atendente Updt\",\r\n    \"email\": \"atendente@oficina.com.br\",\r\n    \"role\": \"ATTENDANT\",\r\n    \"password\": \"$2a$10$pUsf1lDFh/5V9ty0pJlM0uvmSlzvbfEAsTYGFtouP9m46a4kLvDQa\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{AWS_URL}}api/v1/users/update",
+                  "host": [
+                    "{{AWS_URL}}api"
+                  ],
+                  "path": [
+                    "v1",
+                    "users",
+                    "update"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Deleta um usuário pelo ID",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{TOKEN_FUNCIONARIO}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "{{AWS_URL}}api/v1/users/1f8a61ae-f9c7-4a8f-ba27-02ac0bc9cf6b",
+                  "host": [
+                    "{{AWS_URL}}api"
+                  ],
+                  "path": [
+                    "v1",
+                    "users",
+                    "1f8a61ae-f9c7-4a8f-ba27-02ac0bc9cf6b"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Ordem de Serviço",
+          "item": [
+            {
+              "name": "Cria uma nova ordem de serviço",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{TOKEN_FUNCIONARIO}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"customerId\": \"70f9316e-c7d8-4908-829e-366c8434b4c6\",\r\n    \"vehicleId\": \"a1a2619c-fa0b-923b-5cc1-699fb767e7f9\",\r\n    \"createdById\": \"70e6215d-b5c6-4896-987c-144a6312a2b3\",\r\n    \"assignedMechanicId\": null,\r\n    \"parts\": [\r\n        {\r\n            \"partId\" : \"d1f8e3a2-3c1f-4e1b-9b47-1a8fbbf34c72\",\r\n            \"quantity\": 1\r\n        }\r\n    ],\r\n    \"services\": [\r\n        {\r\n            \"serviceId\": \"40e6215d-b5c6-4896-987c-144a6312a2a7\",\r\n            \"quantity\": 3\r\n        }\r\n    ]\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{AWS_URL}}api/v1/work-orders/create",
+                  "host": [
+                    "{{AWS_URL}}api"
+                  ],
+                  "path": [
+                    "v1",
+                    "work-orders",
+                    "create"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Adiciona novos itens para a Ordem de Serviço",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{TOKEN_FUNCIONARIO}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "PATCH",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"parts\": [\r\n        {\r\n            \"partId\" : \"40e6215d-b5c6-4896-987c-144a6312a2a6\",\r\n            \"quantity\": 2\r\n        }\r\n    ],\r\n    \"services\": [\r\n        {\r\n            \"serviceId\": \"40e6215d-b5c6-4896-987c-144a6312a2a8\",\r\n            \"quantity\": 3\r\n        }\r\n    ]\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{AWS_URL}}api/v1/work-orders/f7e9507c-0fd4-4180-b330-dbc87dda605c/update-items",
+                  "host": [
+                    "{{AWS_URL}}api"
+                  ],
+                  "path": [
+                    "v1",
+                    "work-orders",
+                    "f7e9507c-0fd4-4180-b330-dbc87dda605c",
+                    "update-items"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Busca uma ordem de serviço pelo ID",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{TOKEN_FUNCIONARIO}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{AWS_URL}}api/v1/work-orders/e1034dc1-5533-4b76-9128-8e496b9eb590",
+                  "host": [
+                    "{{AWS_URL}}api"
+                  ],
+                  "path": [
+                    "v1",
+                    "work-orders",
+                    "e1034dc1-5533-4b76-9128-8e496b9eb590"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Consulta o status da ordem de serviço pelo ID",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{TOKEN_CLIENTE}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{AWS_URL}}api/v1/work-orders/e1034dc1-5533-4b76-9128-8e496b9eb590/status",
+                  "host": [
+                    "{{AWS_URL}}api"
+                  ],
+                  "path": [
+                    "v1",
+                    "work-orders",
+                    "e1034dc1-5533-4b76-9128-8e496b9eb590",
+                    "status"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Vincula um mecânico a uma ordem de serviço",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{TOKEN_FUNCIONARIO}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "PATCH",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"mechanicId\": \"60e6215d-b5c6-4896-987c-144a6312a2b2\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{AWS_URL}}api/v1/work-orders/f7e9507c-0fd4-4180-b330-dbc87dda605c/assign-mechanic",
+                  "host": [
+                    "{{AWS_URL}}api"
+                  ],
+                  "path": [
+                    "v1",
+                    "work-orders",
+                    "f7e9507c-0fd4-4180-b330-dbc87dda605c",
+                    "assign-mechanic"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Atualiza o status de uma ordem de serviço",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{TOKEN_FUNCIONARIO}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "PATCH",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"status\": \"COMPLETED\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{AWS_URL}}api/v1/work-orders/9cedced1-a0f7-4332-a54d-21af15d7d8b1/status",
+                  "host": [
+                    "{{AWS_URL}}api"
+                  ],
+                  "path": [
+                    "v1",
+                    "work-orders",
+                    "9cedced1-a0f7-4332-a54d-21af15d7d8b1",
+                    "status"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Aprova uma ordem de serviço",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{TOKEN_CLIENTE}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "PATCH",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{AWS_URL}}api/v1/work-orders/f7e9507c-0fd4-4180-b330-dbc87dda605c/approve",
+                  "host": [
+                    "{{AWS_URL}}api"
+                  ],
+                  "path": [
+                    "v1",
+                    "work-orders",
+                    "f7e9507c-0fd4-4180-b330-dbc87dda605c",
+                    "approve"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Reprova uma ordem de serviço",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{TOKEN_CLIENTE}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "PATCH",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{AWS_URL}}api/v1/work-orders/b0a9eaa3-3273-4c9c-bbf9-ca6360379e11/refuse",
+                  "host": [
+                    "{{AWS_URL}}api"
+                  ],
+                  "path": [
+                    "v1",
+                    "work-orders",
+                    "b0a9eaa3-3273-4c9c-bbf9-ca6360379e11",
+                    "refuse"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Calcula o tempo médio de conclusão das ordens de serviço",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{TOKEN_FUNCIONARIO}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{AWS_URL}}api/v1/work-orders/calculate-average-time",
+                  "host": [
+                    "{{AWS_URL}}api"
+                  ],
+                  "path": [
+                    "v1",
+                    "work-orders",
+                    "calculate-average-time"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Busca o histórico de ordens de serviço por CPF/CNPJ",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{AWS_URL}}api/v1/work-orders/history/by-cpf/03101555094",
+                  "host": [
+                    "{{AWS_URL}}api"
+                  ],
+                  "path": [
+                    "v1",
+                    "work-orders",
+                    "history",
+                    "by-cpf",
+                    "03101555094"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Stock Service",
+      "item": [
+        {
+          "name": "Reserva Peça",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"workOrderId\": \"c776fe5a-f083-4423-8d15-32355f05bef4\",\r\n    \"items\": [\r\n        {\r\n            \"partId\": \"40e6215d-b5c6-4896-987c-144a6312a2a6\",\r\n            \"quantity\": 1\r\n        }\r\n    ]\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{AWS_URL}}api/stock/reserve",
+              "host": [
+                "{{AWS_URL}}api"
+              ],
+              "path": [
+                "stock",
+                "reserve"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Aprova Reserva",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{TOKEN_FUNCIONARIO}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"workOrderId\": \"db6ba713-c8cc-4e77-a1b0-0fdb15b4a5dd\",\r\n    \"items\": [\r\n        {\r\n            \"partId\": \"40e6215d-b5c6-4896-987c-144a6312a2a6\",\r\n            \"quantity\": 1\r\n        }\r\n    ]\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{AWS_URL}}api/stock/approve-reserve",
+              "host": [
+                "{{AWS_URL}}api"
+              ],
+              "path": [
+                "stock",
+                "approve-reserve"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Cancela Reserva",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{TOKEN_FUNCIONARIO}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"workOrderId\": \"db6ba713-c8cc-4e77-a1b0-0fdb15b4a5dd\",\r\n    \"items\": [\r\n        {\r\n            \"partId\": \"40e6215d-b5c6-4896-987c-144a6312a2a6\",\r\n            \"quantity\": 1\r\n        }\r\n    ]\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{AWS_URL}}api/stock/cancel-reserve",
+              "host": [
+                "{{AWS_URL}}api"
+              ],
+              "path": [
+                "stock",
+                "cancel-reserve"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Adiciona uma nova peça",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{TOKEN_FUNCIONARIO}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"name\": \"Cria Peça\",\r\n    \"price\": 10,\r\n    \"stockQuantity\": 10\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{AWS_URL}}api/stock/parts",
+              "host": [
+                "{{AWS_URL}}api"
+              ],
+              "path": [
+                "stock",
+                "parts"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Atualiza uma peça existente",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{TOKEN_FUNCIONARIO}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"name\": \"Peça nova atualizada\",\r\n    \"price\": 50,\r\n    \"stockQuantity\": 1500,\r\n    \"reservedStock\": 0\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{AWS_URL}}api/stock/parts/40e6215d-b5c6-4896-987c-144a6312a2a6",
+              "host": [
+                "{{AWS_URL}}api"
+              ],
+              "path": [
+                "stock",
+                "parts",
+                "40e6215d-b5c6-4896-987c-144a6312a2a6"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Busca uma peça pelo ID",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{TOKEN_FUNCIONARIO}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{AWS_URL}}api/stock/parts/40e6215d-b5c6-4896-987c-144a6312a2a6",
+              "host": [
+                "{{AWS_URL}}api"
+              ],
+              "path": [
+                "stock",
+                "parts",
+                "40e6215d-b5c6-4896-987c-144a6312a2a6"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Deleta uma peça pelo ID",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{TOKEN_FUNCIONARIO}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "localhost:8080/api/stock/parts/701d0c9b-1e0a-4488-9f08-6acdee214f74",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "stock",
+                "parts",
+                "701d0c9b-1e0a-4488-9f08-6acdee214f74"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Autenticação por documento - Fluxo cliente",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"documentNumber\": \"03101555094\"}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{AWS_URL}}/auth",
+          "host": [
+            "{{AWS_URL}}"
+          ],
+          "path": [
+            "auth"
+          ]
+        },
+        "description": "Generated from cURL: curl -X POST http://localhost:3000/cpf-auth \\\r\n     -H \"Content-Type: application/json\" \\\r\n     -d '{\"cpf\": \"12345678900\"}'"
+      },
+      "response": []
+    },
+    {
+      "name": "Login de funcionário",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"email\": \"administrador@adm.com.br\",\r\n    \"password\": \"123\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{AWS_URL}}api/v1/auth/login",
+          "host": [
+            "{{AWS_URL}}api"
+          ],
+          "path": [
+            "v1",
+            "auth",
+            "login"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Actuator Health",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{AWS_URL}}api/actuator/health",
+          "host": [
+            "{{AWS_URL}}api"
+          ],
+          "path": [
+            "actuator",
+            "health"
+          ]
+        }
+      },
+      "response": []
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{TOKEN_FUNCIONARIO}}",
+        "type": "string"
+      }
+    ]
+  },
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "AWS_URL",
+      "value": ""
+    },
+    {
+      "key": "TOKEN_FUNCIONARIO",
+      "value": ""
+    },
+    {
+      "key": "TOKEN_CLIENTE",
+      "value": "",
+      "type": "default"
+    }
+  ]
+}
