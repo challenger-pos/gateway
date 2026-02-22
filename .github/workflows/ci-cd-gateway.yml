@@ -9,13 +9,13 @@ on:
 
 env:
   TERRAFORM_API_GW_DIR: infra/terraform
-  ENVIRONMENT: ${{ github.ref_name == 'main' && 'production' || (github.ref_name == 'homologation' && 'homologation' || 'develop') }}
+  ENVIRONMENT: ${{ github.ref_name == 'main' && 'production' || (github.ref_name == 'homologation' && 'homologation' || 'dev') }}
 
 jobs:
   deploy-gateway:
     name: Deploy API Gateway
     runs-on: ubuntu-latest
-    environment: ${{ github.ref_name == 'main' && 'production' || (github.ref_name == 'homologation' && 'homologation' || 'develop') }}
+    environment: ${{ github.ref_name == 'main' && 'production' || (github.ref_name == 'homologation' && 'homologation' || 'dev') }}
 
     steps:
       - name: Checkout code
@@ -35,7 +35,7 @@ jobs:
 
       - name: Terraform Gateway Init
         working-directory: ${{ env.TERRAFORM_API_GW_DIR }}
-        run: terraform init -backend-config="key=api_gateway/${ENVIRONMENT}/terraform.tfstate"
+        run: terraform init -backend-config="key=v4/api_gateway/${ENVIRONMENT}/terraform.tfstate"
 
       - name: Terraform Gateway Apply
         working-directory: ${{ env.TERRAFORM_API_GW_DIR }}

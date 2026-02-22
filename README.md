@@ -9,14 +9,15 @@ Este repositório gerencia o **AWS API Gateway (HTTP API)**, que atua como o pon
 O API Gateway centraliza o tráfego e distribui as requisições da seguinte forma:
 
 - **Rota de Autenticação (`/auth`):** Direcionada para a **AWS Lambda** (Java 21) para validação de documento e geração de JWT.
-- **Rotas de Negócio (`/api/v1/{proxy+}`):** Encaminha as requisições para a **Aplicação Principal** no EKS, onde residem os serviços da Mecânica.
+- **Rotas de Ordem de Serviço (`/api/v1/{proxy+}`):** Encaminha as requisições para o **Serviço de Ordem de Serviço** no EKS, onde residem os serviços da Mecânica.
+- **Rotas de Estoque (`/api/stock/{proxy+}`):** Direcionadas para o **Microserviço de Estoque** no EKS.
 - **Rota de Documentação:** Mapeamento específico para o **Swagger UI** e definições OpenAPI.
 
 ---
 
 ## 🧭 Diagrama da Arquitetura
 
-![Diagrama da Arquitetura do API Gateway](docs/diagrama-gateway.png)
+![Diagrama da Arquitetura do API Gateway](docs/diagrama-gatewayV2.png)
 
 ---
 
@@ -71,7 +72,7 @@ nas branches `homologation` e `main`.
 Este repositório disponibiliza uma **Postman Collection** contendo
 os principais fluxos da aplicação da oficina mecânica.
 
-📁 Local: `docs/postman/oficina-api.postman_collection.json`
+📁 Local: `docs/postman/oficina-api.postman_collection_fase_4.json`
 
 ### 🔐 Autenticação
 - **Login de funcionário:** `POST /api/v1/auth/login`

@@ -1,9 +1,9 @@
-data "terraform_remote_state" "infra" {
+data "terraform_remote_state" "stock_service" {
   backend = "s3"
 
   config = {
     bucket = "tf-state-challenge-bucket"
-    key = local.kubernetes_state_path
+    key    = local.stock_service_state_path
     region = "us-east-2"
   }
 }
