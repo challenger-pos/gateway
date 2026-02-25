@@ -1,4 +1,4 @@
-data "terraform_remote_state" "app" {
+/*data "terraform_remote_state" "app" {
   backend = "s3"
 
   config = {
@@ -6,4 +6,4 @@ data "terraform_remote_state" "app" {
     key    = local.app_state_path
     region = "us-east-2"
   }
-}
+}*/
